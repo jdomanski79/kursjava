@@ -6,48 +6,58 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Interfejs {
-	
+	static Scanner input = new Scanner(System.in);
 	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Kot kotek = new Kot();
+		Kot kot = new Kot();
 		
 		
 		
 		
 		System.out.println("Podaj imiê:");
-		kotek.setImie(getUserInput());
+		kot.setImie(getUserInput());
 		
 		System.out.println("Podaj w³aœciciela:");
-		kotek.setOpiekun(getUserInput());
+		kot.setOpiekun(getUserInput());
 		
-		System.out.println("Podaj datê urodzenia:");
+		
 		Date dataUrodzenia = null;
-		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
-		Boolean niepoprawnaData = false;
 		
 		do {
+			System.out.println("Podaj datê urodzenia:");
 			try {
-				niepoprawnaData = false;
 				dataUrodzenia = sdf.parse(getUserInput());
+				kot.setDataUrodzenia(dataUrodzenia);
 			} catch(ParseException pe){
-				System.out.println("Podaj prawid³ow¹ datê:");
-				niepoprawnaData = true;
+				System.out.println("Podaj prawid³ow¹ datê w formacie yyyy.MM.dd: ");
 			} 
 		}
-		while (niepoprawnaData);
-		kotek.setDataUrodzenia(dataUrodzenia);
+		while (kot.getDataUrodzenia() == null);
 		
-		System.out.println(kotek.przedstawSie());
+		Float waga = 0.0f;
+		
+		do {
+			System.out.println("Podaj wagê kota:");
+			try {
+				waga = Float.valueOf(getUserInput());
+				kot.setWaga(waga);
+			} 
+			catch (NumberFormatException e) {
+				System.out.println("Coœ nie tak z formatem liczby..");
+			}
+			
+		} while(kot.getWaga() == null);
+		
+		System.out.println(kot.przedstawSie());
 	}
 	
 	
 	
 	public static String getUserInput() {
-		Scanner sc = new Scanner(System.in);
-		return sc.nextLine();
+		return input.nextLine().trim();
 	}
 
 }

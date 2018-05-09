@@ -1,5 +1,8 @@
 package pl.kobietydokodu;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Kot {
@@ -16,8 +19,8 @@ public class Kot {
 		this.imie = imie;
 	}
 
-	public Date getDataUrodzenia() {
-		return dataUrodzenia;
+	public String getDataUrodzenia() {
+		return DateFormat.getDateInstance(DateFormat.LONG).format(dataUrodzenia);
 	}
 
 	public void setDataUrodzenia(Date dataUrodzenia) {
@@ -47,12 +50,23 @@ public class Kot {
 	public String przedstawSie() {
 		String przedstawienie = "Nazywam siê " + 
 				this.imie + ", urodzony " + 
-				this.dataUrodzenia + " a mój opiekun to " +
-				this.opiekun;
+				this.getDataUrodzenia() + 
+				"\nMój opiekun to " + this.opiekun +
+				"\nWa¿ê " + this.waga + "kg.";
 		return przedstawienie;
 	}
 	
-	
+	public static void main(String[] args) {
+		Kot kot = new Kot();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+		try {
+			kot.setDataUrodzenia(sdf.parse("1980.12.11"));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Data urodzenia: " + kot.getDataUrodzenia());
+	}
 	
 }
 
