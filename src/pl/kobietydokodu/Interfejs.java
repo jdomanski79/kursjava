@@ -3,6 +3,7 @@ package pl.kobietydokodu;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class Interfejs {
@@ -10,9 +11,8 @@ public class Interfejs {
 	
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Kot kot = new Kot();
-		
+		KotDAO koty = new KotDAO();
 		
 		
 		
@@ -51,6 +51,7 @@ public class Interfejs {
 			
 		} while(kot.getWaga() == null);
 		
+		koty.dodajKota(kot);
 		System.out.println(kot.przedstawSie());
 	}
 	
