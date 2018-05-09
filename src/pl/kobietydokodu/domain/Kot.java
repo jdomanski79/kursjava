@@ -1,9 +1,10 @@
-package pl.kobietydokodu;
+package pl.kobietydokodu.domain;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 public class Kot {
 	private String imie;
@@ -11,6 +12,17 @@ public class Kot {
 	private Float waga;
 	private String opiekun;
 	
+	
+	public Kot() {}
+	
+	public Kot(String imie, String opiekun) {
+		Random r = new Random();
+		this.imie = imie;
+		this.dataUrodzenia = new Date();
+		this.waga = r.nextFloat()*5 + 2;
+		this.opiekun = opiekun;
+	}
+
 	public String getImie() {
 		return imie;
 	}
@@ -43,10 +55,6 @@ public class Kot {
 		this.opiekun = opiekun;
 	}
 
-	
-	
-	
-	
 	public String przedstawSie() {
 		String przedstawienie = "Nazywam siê " + 
 				this.imie + ", urodzony " + 
