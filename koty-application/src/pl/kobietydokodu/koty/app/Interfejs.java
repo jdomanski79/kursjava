@@ -1,4 +1,4 @@
-package pl.kobietydokodu.app;
+package pl.kobietydokodu.koty.app;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -7,15 +7,14 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-import pl.kobietydokodu.domain.Kot;
-
+import pl.kobietydokodu.koty.domain.*;
 public class Interfejs {
 	static Scanner input = new Scanner(System.in);
 	
 	
 	public static void main(String[] args) {
 		KotDAO kotDAO = new KotDAO();
-		// zape³nienie listy
+		// zapeï¿½nienie listy
 		
 		kotDAO.dodajKota(new Kot("Balbina", "Jarek"));
 		kotDAO.dodajKota(new Kot("Rychu", "Agnieszka"));
@@ -35,13 +34,13 @@ public class Interfejs {
 					
 					break;
 			}
-		} while(wybor != "x");
+		} while(!wybor.equals("x"));
 		
 	}
 	
 	public static void obsluzListeKotow(KotDAO kotDAO) {
 		if (kotDAO.iloscKotow() == 0) {
-			System.out.println("Brak kotów.. :(");
+			System.out.println("Brak kotï¿½w.. :(");
 			return;
 		}
 		
@@ -69,14 +68,14 @@ public class Interfejs {
 	}
 
 	/**
-	 * drukuje g³ówne menu programu
+	 * drukuje gï¿½ï¿½wne menu programu
 	 */
 	public static void printMenu() {
-		System.out.println("\nWybierz opcjê:");
+		System.out.println("\nWybierz opcjï¿½:");
 		System.out.println("");
 		System.out.println("1. Dodaj kota");
-		System.out.println("2. Lista kotów");
-		System.out.println("x - zakoñcz");
+		System.out.println("2. Lista kotï¿½w");
+		System.out.println("x - zakoï¿½cz");
 	}
 	
 	public static void printCatList(KotDAO kotDAO) {
@@ -84,19 +83,19 @@ public class Interfejs {
 	}
 	
 	/**
-	 * Tworzy i zwraca nowy obiekt kota na podstawie danych wpisanych przez u¿ytkownika
+	 * Tworzy i zwraca nowy obiekt kota na podstawie danych wpisanych przez uï¿½ytkownika
 	 * @return Kot
 	 */
 	public static Kot getKot() {
 		
 		Kot kot = new Kot();
 		
-		//imiê
-		System.out.println("Podaj imiê:");
+		//imiï¿½
+		System.out.println("Podaj imiï¿½:");
 		kot.setImie(getUserInput());
 
-		//w³aœciciel
-		System.out.println("Podaj w³aœciciela:");
+		//wï¿½aï¿½ciciel
+		System.out.println("Podaj wï¿½aï¿½ciciela:");
 		kot.setOpiekun(getUserInput());
 
 		//data urodzenia
@@ -104,12 +103,12 @@ public class Interfejs {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 
 		do {
-			System.out.println("Podaj datê urodzenia:");
+			System.out.println("Podaj datï¿½ urodzenia:");
 			try {
 				dataUrodzenia = sdf.parse(getUserInput());
 				kot.setDataUrodzenia(dataUrodzenia);
 			} catch(ParseException pe){
-				System.out.println("Podaj prawid³ow¹ datê w formacie yyyy.MM.dd: ");
+				System.out.println("Podaj prawidï¿½owï¿½ datï¿½ w formacie yyyy.MM.dd: ");
 			} 
 		}
 		while (kot.getDataUrodzenia() == null);
@@ -118,13 +117,13 @@ public class Interfejs {
 		Float waga = 0.0f;
 
 		do {
-			System.out.println("Podaj wagê kota:");
+			System.out.println("Podaj wagï¿½ kota:");
 			try {
 				waga = Float.valueOf(getUserInput());
 				kot.setWaga(waga);
 			} 
 			catch (NumberFormatException e) {
-				System.out.println("Coœ nie tak z formatem liczby..");
+				System.out.println("Coï¿½ nie tak z formatem liczby..");
 			}
 
 		} while(kot.getWaga() == null);

@@ -16,4 +16,12 @@
       </plugin>
     </plugins>
   </build>
+  <name>Koty</name>
+  <url>www.kobietydokodu.pl</url>
+  <description>Projekt na podstawie kursu Java</description>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>koty-application</module>
+  	<module>koty-domain</module>
+  </modules>
 </project>

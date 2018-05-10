@@ -1,4 +1,4 @@
-package pl.kobietydokodu.domain;
+package pl.kobietydokodu.koty.domain;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -56,11 +56,11 @@ public class Kot {
 	}
 
 	public String przedstawSie() {
-		String przedstawienie = "Nazywam siê " + 
+		String przedstawienie = "Nazywam siï¿½ " + 
 				this.imie + ", urodzony " + 
 				this.getDataUrodzenia() + 
-				"\nMój opiekun to " + this.opiekun +
-				"\nWa¿ê " + this.waga + "kg.";
+				"\nMï¿½j opiekun to " + this.opiekun +
+				"\nWaï¿½ï¿½ " + this.waga + "kg.";
 		return przedstawienie;
 	}
 	
